@@ -15,6 +15,7 @@ import java.util.Scanner;
 
 public class App {
     public void run(){
+        System.out.println("=== JDBC 텍스트 게시판 ===");
         Scanner sc = Container.scanner;
         List<Article> articles = new ArrayList<>();
         int articleLastId = 0; //게시물 번호
@@ -106,10 +107,31 @@ public class App {
                 //exit를 입력 시 while 반복문을 빠져나온다.
             }
 
+            //게시물 명령어 확인하기
+            else if (cmd.equals("command")){
+                System.out.println("== 명령어 목록 호출 ==");
+                System.out.println("게시물 관련 : article");
+                System.out.println("회원 관련 : member");
+                System.out.println("프로그램 종료: exit");
+
+                System.out.printf("검색) ");
+                String CommandCheck = sc.nextLine();
+
+                if (CommandCheck.equals("article")){
+                    System.out.println("게시물 관련 명령어 목록");
+                    System.out.println("게시물 작성 : /usr/article/write");
+                    System.out.println("게시물 목록 확인 : /usr/article/list");
+                }
+                else if (CommandCheck.equals("member")){
+                    System.out.println("회원 관련 명령어 목록");
+                }
+            }
+
             //잘못된 명령어 입력 시
             else {
                 System.out.println("잘못된 명령어를 입력하셨습니다.");
                 System.out.println("명령어를 확인해주세요.");
+                System.out.println("명령어 확인: command");
             }
         }
         sc.close();
